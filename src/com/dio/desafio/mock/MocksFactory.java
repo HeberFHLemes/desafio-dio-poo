@@ -48,9 +48,7 @@ public class MocksFactory {
     }
 
     private static void progredirDevs(List<Bootcamp> bootcamps){
-        bootcamps.forEach(b -> {
-            b.getInscritos().forEach(Dev::progredir);
-        });
+        bootcamps.forEach(b -> b.getInscritos().forEach(Dev::progredir));
 
         bootcamps.get(1).getInscritos().stream().findFirst().ifPresent(Dev::progredir);
         bootcamps.get(1).getInscritos().stream().findAny().ifPresent(Dev::progredir);

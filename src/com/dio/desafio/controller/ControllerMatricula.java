@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import java.util.List;
 
 public interface ControllerMatricula extends IController{
-    public static void matricularDev(Dev dev, List<Bootcamp> bootcamps){
+    static void matricularDev(Dev dev, List<Bootcamp> bootcamps){
         int escolha = ControllerVerBootcamps.mostrarEscolhaBootcamps(bootcamps);
 
         if (escolha == -1){

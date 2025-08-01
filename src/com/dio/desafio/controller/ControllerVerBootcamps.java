@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ControllerVerBootcamps extends IController {
 
-    public static void mostrarTabelaBootcamps(List<Bootcamp> bootcamps){
+     static void mostrarTabelaBootcamps(List<Bootcamp> bootcamps){
 
         TelaBootcamps telaBootcamps = new TelaBootcamps();
 
@@ -36,7 +36,7 @@ public interface ControllerVerBootcamps extends IController {
 
     }
 
-    public static int mostrarEscolhaBootcamps(List<Bootcamp> bootcamps){
+    static int mostrarEscolhaBootcamps(List<Bootcamp> bootcamps){
         return bootcamps == null ?
                 -1 :
                 JOptionPane.showOptionDialog(
