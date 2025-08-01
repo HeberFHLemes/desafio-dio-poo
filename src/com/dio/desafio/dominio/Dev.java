@@ -1,7 +1,11 @@
 package com.dio.desafio.dominio;
 
+import com.dio.desafio.utils.exceptions.NenhumConteudoInscrito;
+
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Dev {
@@ -9,6 +13,38 @@ public class Dev {
     private String nome;
     private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
+
+    public Dev(String nome){
+        this.nome = nome;
+    }
+
+    public Dev(){}
+
+    public void inscreverEmBootcamp(Bootcamp bootcamp){
+        if (bootcamp == null){ throw new IllegalArgumentException(); }
+        this.conteudosInscritos.addAll(bootcamp.getConteudos());
+        bootcamp.getInscritos().add(this);
+    }
+
+    public void progredir() {
+        Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
+        if(conteudo.isPresent()) {
+            this.conteudosConcluidos.add(conteudo.get());
+            this.conteudosInscritos.remove(conteudo.get());
+        } else {
+            throw new NenhumConteudoInscrito("Você não está matriculado em nenhum conteúdo!");
+        }
+    }
+
+    public double calcularTotalXp() {
+        Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
+        double soma = 0;
+        while (iterator.hasNext()) {
+            soma += iterator.next().calcularXp();
+        }
+        return soma;
+    }
+
 
     public String getNome() {
         return this.nome;
@@ -38,7 +74,9 @@ public class Dev {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Dev dev = (Dev) o;
-        return Objects.equals(nome, dev.nome) && Objects.equals(conteudosInscritos, dev.conteudosInscritos) && Objects.equals(conteudosConcluidos, dev.conteudosConcluidos);
+        return Objects.equals(nome, dev.nome) &&
+                Objects.equals(conteudosInscritos, dev.conteudosInscritos)
+                && Objects.equals(conteudosConcluidos, dev.conteudosConcluidos);
     }
 
     @Override
