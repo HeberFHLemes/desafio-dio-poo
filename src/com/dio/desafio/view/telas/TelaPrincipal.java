@@ -29,9 +29,9 @@ public abstract class TelaPrincipal extends JFrame{
         this.jButtonSelecionar.setEnabled(true);
         this.menu.adicionarOpcoes(OpcoesMenuPrincipal.values());
 
-        add(jButtonSelecionar);
-
         add(menu);
+
+        add(jButtonSelecionar);
     }
 
     public abstract void avisarController();

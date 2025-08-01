@@ -1,20 +1,34 @@
 package com.dio.desafio.controller;
 
-import com.dio.desafio.utils.enums.OpcoesMenuPrincipal;
+import com.dio.desafio.controller.strategy.PrincipalRedirectStrategy;
+import com.dio.desafio.controller.strategy.RedirectStrategy;
+import com.dio.desafio.dominio.Bootcamp;
+import com.dio.desafio.dominio.Dev;
+import com.dio.desafio.mock.MocksFactory;
+import com.dio.desafio.view.helpers.Mensagens;
 import com.dio.desafio.view.telas.TelaPrincipal;
 
-import javax.swing.JOptionPane;
+import java.util.List;
 
 /**
  * Classe para controlar o fluxo de escolhas do usuário.
  * Além de receber e enviar dados ao dominio, para aplicação
  * das regras de negócio.
  */
-public class ControllerPrincipal {
+public class ControllerPrincipal implements IController {
 
-    public ControllerPrincipal(){}
+    private Dev dev;
 
     private TelaPrincipal tela;
+
+    private final RedirectStrategy redirectStrategy = new PrincipalRedirectStrategy();
+
+    private List<Bootcamp> bootcamps;
+
+    public ControllerPrincipal(){
+        this.dev = new Dev("Você");
+        this.bootcamps = MocksFactory.criarMocks();
+    }
 
     public void iniciarAplicacao(){
         ControllerPrincipal cp = this;
@@ -32,33 +46,26 @@ public class ControllerPrincipal {
         tela.setVisible(true);
     }
 
-    public void direcionar(int index){
+    public void direcionar(int escolha){
 
-        OpcoesMenuPrincipal opcaoEscolhida = OpcoesMenuPrincipal.values()[index];
-        switch (opcaoEscolhida){
-            case SAIR:
-                sair();
-                System.exit(0);
-            case MATRICULAR:
-                break;
-            case PROGREDIR:
-                break;
-            case CONSULTAR_BOOTCAMP:
-                break;
-            case RANKING:
-                break;
-            default:
-                mensagemAoUsuario("Escolha inválida... Tente novamente.");
-                break;
-        }
+        redirectStrategy.redirect(escolha, this);
     }
 
-    private void mensagemAoUsuario(String mensagem){
-        JOptionPane.showMessageDialog(tela, mensagem);
-    }
-
-    private void sair(){
-        mensagemAoUsuario("Até a próxima!");
+    public void sair(){
+        Mensagens.mensagemAoUsuario("Até a próxima!", "Sair");
         this.tela.setVisible(false);
+        System.exit(0);
+    }
+
+    public void erro(){
+        Mensagens.mensagemErro("Escolha inválida, tente novamente.");
+    }
+
+    public Dev getDev(){
+        return this.dev;
+    }
+
+    public List<Bootcamp> getBootcamps(){
+        return this.bootcamps;
     }
 }

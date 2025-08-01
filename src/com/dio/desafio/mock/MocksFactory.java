@@ -41,8 +41,10 @@ public class MocksFactory {
     private static void matricularDevs(List<Bootcamp> bootcamps){
         List<Dev> devs = criarDevs();
 
-        bootcamps.get(0).getInscritos().addAll(devs.subList(0, 3));
-        bootcamps.get(1).getInscritos().addAll(devs.subList(3, devs.size()));
+        devs.subList(0, 3).forEach(d -> d.inscreverEmBootcamp(bootcamps.get(0)));
+        devs.subList(3, devs.size()).forEach(d -> d.inscreverEmBootcamp(bootcamps.get(1)));
+        // bootcamps.get(0).getInscritos().addAll(devs.subList(0, 3));
+        // bootcamps.get(1).getInscritos().addAll(devs.subList(3, devs.size()));
     }
 
     private static void progredirDevs(List<Bootcamp> bootcamps){
@@ -64,14 +66,14 @@ public class MocksFactory {
         );
     }
 
-    public static List<Bootcamp> criarBootcamps(){
+    private static List<Bootcamp> criarBootcamps(){
         return List.of(
                 new Bootcamp("Java Primeiros Passos", "Dê os seus primeiros passos com a linguagem mais robusta do mercado Tech!", 50),
                 new Bootcamp("Spring Boot Camp", "Aprende um dos frameworks mais em alta do mercado e crie APIs do zero com o Spring Framework!", 60)
         );
     }
 
-    public static List<Dev> criarDevs() {
+    private static List<Dev> criarDevs() {
         return List.of(
                 new Dev("Javeira123"),
                 new Dev("João L."),

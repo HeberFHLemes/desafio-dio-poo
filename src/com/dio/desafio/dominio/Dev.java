@@ -45,7 +45,6 @@ public class Dev {
         return soma;
     }
 
-
     public String getNome() {
         return this.nome;
     }

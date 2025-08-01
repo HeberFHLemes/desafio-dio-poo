@@ -77,4 +77,9 @@ public class Bootcamp {
     public int hashCode() {
         return Objects.hash(nome, descricao, dataInicial, dataFinal, inscritos, conteudos);
     }
+
+    @Override
+    public String toString(){
+        return this.nome;
+    }
 }
