@@ -1,5 +1,6 @@
 package com.dio.desafio.view.telas;
 
+import com.dio.desafio.utils.enums.OpcoesMenuPrincipal;
 import com.dio.desafio.view.componentes.MenuDeOpcoes;
 
 import javax.swing.JFrame;
@@ -19,12 +20,19 @@ public abstract class TelaPrincipal extends JFrame{
         setSize(600, 400);
         setLocationRelativeTo(null);
 
-        add(jButtonSelecionar);
-
-        add(menu);
+        adicionarComponentes();
 
         setLayout(new FlowLayout());
     }
 
-    protected abstract void avisarController();
+    private void adicionarComponentes(){
+        this.jButtonSelecionar.setEnabled(true);
+        this.menu.adicionarOpcoes(OpcoesMenuPrincipal.values());
+
+        add(jButtonSelecionar);
+
+        add(menu);
+    }
+
+    public abstract void avisarController();
 }

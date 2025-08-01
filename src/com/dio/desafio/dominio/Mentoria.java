@@ -6,7 +6,10 @@ public class Mentoria extends Conteudo{
 
     private LocalDate data;
 
-    public Mentoria() {}
+    public Mentoria(String nome, String descricao, LocalDate data){
+        super(nome, descricao);
+        this.data = data;
+    }
 
     @Override
     public double calcularXp() {

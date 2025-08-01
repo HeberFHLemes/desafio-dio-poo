@@ -1,15 +1,9 @@
 package com.dio.desafio.controller;
 
-import com.dio.desafio.dominio.Bootcamp;
-import com.dio.desafio.dominio.Curso;
-import com.dio.desafio.dominio.Mentoria;
-import com.dio.desafio.utils.enums.Conta;
-import com.dio.desafio.utils.enums.TipoConteudo;
-import com.dio.desafio.view.telas.TelaDev;
-import com.dio.desafio.view.telas.TelaLogin;
+import com.dio.desafio.utils.enums.OpcoesMenuPrincipal;
+import com.dio.desafio.view.telas.TelaPrincipal;
 
 import javax.swing.JOptionPane;
-import java.util.Map;
 
 /**
  * Classe para controlar o fluxo de escolhas do usuário.
@@ -20,57 +14,51 @@ public class ControllerPrincipal {
 
     public ControllerPrincipal(){}
 
-    public void iniciarAplicacao(){
-        int escolha = TelaLogin.pedirLogin();
-        if (escolha == JOptionPane.CLOSED_OPTION) {
-            TelaLogin.deslogar();
-            return;
-        }
+    private TelaPrincipal tela;
 
-        Conta conta = Conta.values()[escolha];
-        direcionarUsuario(conta);
+    public void iniciarAplicacao(){
+        ControllerPrincipal cp = this;
+        this.tela = new TelaPrincipal() {
+
+            @Override
+            public void avisarController() {
+                this.jButtonSelecionar.addActionListener(e -> {
+                    int selecao = this.menu.getSelectedIndex();
+                    cp.direcionar(selecao);
+                });
+            }
+        };
+        this.tela.avisarController();
+        tela.setVisible(true);
     }
 
-    private void direcionarUsuario(Conta conta){
-        switch (conta){
-            case DEV:
-                aplicacaoDev();
+    public void direcionar(int index){
+
+        OpcoesMenuPrincipal opcaoEscolhida = OpcoesMenuPrincipal.values()[index];
+        switch (opcaoEscolhida){
+            case SAIR:
+                sair();
+                System.exit(0);
+            case MATRICULAR:
                 break;
-            case ADMIN:
-                aplicacaoAdmin();
+            case PROGREDIR:
+                break;
+            case CONSULTAR_BOOTCAMP:
+                break;
+            case RANKING:
                 break;
             default:
+                mensagemAoUsuario("Escolha inválida... Tente novamente.");
                 break;
         }
     }
 
-    private void aplicacaoDev(){
-        Bootcamp[] bootcamps = new Bootcamp[]{
-                new Bootcamp("Java Primeiros Passos", "Dê os seus primeiros passos com a linguagem mais robusta do mercado Tech!", 50),
-                new Bootcamp("Python para Dados", "Pratique a linguagem Python voltado à análise e ciência de dados!", 30),
-                new Bootcamp("C# Desktop Bootcamp", "Aprenda a linguagem C# e conheça o ecossistema .NET com este bootcamp!", 55),
-                new Bootcamp("Cibercamp #10", "Participe da décima edição e fique por dentro de uma das áreas mais importantes para a tecnologia!", 42),
-                new Bootcamp("Spring Boot Camp", "Aprende um dos frameworks mais em alta do mercado e crie APIs do zero com o Spring Framework!", 60)
-        };
-
-        Mentoria[] mentorias = new Mentoria[]{
-
-        };
-
-        Curso[] cursos = new Curso[]{
-
-        };
-
-        Map<TipoConteudo, Object[]> conteudos = Map.of(
-                TipoConteudo.BOOTCAMP, bootcamps,
-                TipoConteudo.MENTORIA, mentorias,
-                TipoConteudo.CURSO, cursos
-        );
-
-        new TelaDev(conteudos).setVisible(true);
+    private void mensagemAoUsuario(String mensagem){
+        JOptionPane.showMessageDialog(tela, mensagem);
     }
 
-    private void aplicacaoAdmin(){
-
+    private void sair(){
+        mensagemAoUsuario("Até a próxima!");
+        this.tela.setVisible(false);
     }
 }
