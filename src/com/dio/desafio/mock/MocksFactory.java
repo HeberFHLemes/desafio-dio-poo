@@ -69,7 +69,7 @@ public class MocksFactory {
     private static List<Bootcamp> criarBootcamps(){
         return List.of(
                 new Bootcamp("Java Primeiros Passos", "Dê os seus primeiros passos com a linguagem mais robusta do mercado Tech!", 50),
-                new Bootcamp("Spring Boot Camp", "Aprende um dos frameworks mais em alta do mercado e crie APIs do zero com o Spring Framework!", 60)
+                new Bootcamp("Spring Boot Camp", "Aprenda um dos frameworks mais em alta do mercado e crie APIs do zero com o Spring Framework!", 60)
         );
     }
 

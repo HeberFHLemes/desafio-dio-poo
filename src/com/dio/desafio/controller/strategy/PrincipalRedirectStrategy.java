@@ -7,6 +7,8 @@ import com.dio.desafio.utils.enums.OpcoesMenuPrincipal;
 
 import com.dio.desafio.view.helpers.Mensagens;
 
+import static com.dio.desafio.controller.ControllerVerBootcamps.mostrarTabelaBootcamps;
+
 public class PrincipalRedirectStrategy implements RedirectStrategy{
 
     @Override
@@ -27,13 +29,13 @@ public class PrincipalRedirectStrategy implements RedirectStrategy{
                 System.out.println(OpcoesMenuPrincipal.PROGREDIR);
                 break;
             case CONSULTAR_BOOTCAMP:
-                System.out.println(OpcoesMenuPrincipal.CONSULTAR_BOOTCAMP);
+                mostrarTabelaBootcamps(controller.getBootcamps());
                 break;
             case RANKING:
                 System.out.println(OpcoesMenuPrincipal.RANKING);
                 break;
             default:
-                Mensagens.mensagemErro("Escolha inválida... Tente novamente.");
+                Mensagens.mensagemErro("Escolha inválida...");
                 break;
         }
     }

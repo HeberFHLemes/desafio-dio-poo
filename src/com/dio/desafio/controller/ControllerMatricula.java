@@ -7,18 +7,9 @@ import com.dio.desafio.view.helpers.Mensagens;
 import javax.swing.JOptionPane;
 import java.util.List;
 
-public class ControllerMatricula implements IController{
+public interface ControllerMatricula extends IController{
     public static void matricularDev(Dev dev, List<Bootcamp> bootcamps){
-        int escolha = JOptionPane.showOptionDialog(
-                null,
-                "Qual Bootcamp você deseja se matricular?",
-                "Bootcamps - Matrícula",
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                bootcamps.toArray(),
-                bootcamps.toArray()[0]
-        );
+        int escolha = ControllerVerBootcamps.mostrarEscolhaBootcamps(bootcamps);
 
         if (escolha == -1){
             Mensagens.mensagemAoUsuario("Nenhum bootcamp selecionado.", "Bootcamps - Matrícula");
