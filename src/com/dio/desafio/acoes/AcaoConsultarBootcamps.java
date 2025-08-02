@@ -5,6 +5,7 @@ import com.dio.desafio.dominio.Bootcamp;
 import com.dio.desafio.view.componentes.Tabela;
 import com.dio.desafio.view.helpers.Mensagens;
 
+import javax.swing.JFrame;
 import java.util.List;
 
 public class AcaoConsultarBootcamps implements Acao{
@@ -41,7 +42,9 @@ public class AcaoConsultarBootcamps implements Acao{
         }
 
         if (linhas.length > 0) {
-            Tabela.criarTabelaPadrao(controllerPrincipal.getTela(), linhas, colunas).setVisible(true);
+            JFrame jFrame = Tabela.criarTabelaPadrao(linhas, colunas);
+            jFrame.setLocationRelativeTo(controllerPrincipal.getTela());
+            jFrame.setVisible(true);
             return;
         }
 

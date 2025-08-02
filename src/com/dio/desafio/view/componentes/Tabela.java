@@ -1,7 +1,5 @@
 package com.dio.desafio.view.componentes;
 
-import com.dio.desafio.view.telas.TelaPrincipal;
-
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -9,7 +7,7 @@ import javax.swing.ListSelectionModel;
 
 public interface Tabela {
 
-    static JFrame criarTabelaPadrao(TelaPrincipal tela, Object[][] linhas, Object[] colunas){
+    static JFrame criarTabelaPadrao(Object[][] linhas, Object[] colunas){
         if (linhas == null || colunas == null){
             throw new IllegalArgumentException("Linhas e Colunas não podem ser nulas...");
         }
@@ -32,10 +30,6 @@ public interface Tabela {
 
         jFrame.add(jScrollPane);
         jFrame.setSize(600, 400);
-
-        if (tela != null){
-            jFrame.setLocationRelativeTo(tela);
-        }
 
         return jFrame;
     }

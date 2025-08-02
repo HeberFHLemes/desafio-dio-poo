@@ -4,6 +4,7 @@ import com.dio.desafio.controller.ControllerPrincipal;
 import com.dio.desafio.dominio.Dev;
 import com.dio.desafio.view.componentes.Tabela;
 
+import javax.swing.JFrame;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
@@ -49,6 +50,8 @@ public class AcaoVerRanking implements Acao{
             };
         }
 
-        Tabela.criarTabelaPadrao(controllerPrincipal.getTela(), linhas, colunas).setVisible(true);
+        JFrame jFrame = Tabela.criarTabelaPadrao(linhas, colunas);
+        jFrame.setLocationRelativeTo(controllerPrincipal.getTela());
+        jFrame.setVisible(true);
     }
 }
