@@ -10,9 +10,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Será responsável pela instanciação dos dados
- * existentes ao iniciar a aplicação,
- * tornando a experiências "mais realista".
+ * Instancia e organiza os dados dos
+ * objetos utilizados na aplicação,
+ * tornando a experiência "mais realista".
  */
 public abstract class MocksFactory {
 

@@ -21,7 +21,6 @@ public class Bootcamp {
         this.dataFinal = LocalDate.now().plusDays(duracaoEmDias);
     }
 
-    // Getters
     public String getNome() {
         return nome;
     }

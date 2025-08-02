@@ -1,13 +1,11 @@
-package com.dio.desafio.controller.strategy;
+package com.dio.desafio.strategy;
 
-import com.dio.desafio.acoes.Acao;
-import com.dio.desafio.acoes.AcaoConsultarBootcamps;
-import com.dio.desafio.acoes.AcaoMatricular;
-import com.dio.desafio.acoes.AcaoProgredir;
-import com.dio.desafio.acoes.AcaoSair;
-import com.dio.desafio.acoes.AcaoVerRanking;
+import com.dio.desafio.acoes.*;
+
 import com.dio.desafio.controller.ControllerPrincipal;
+
 import com.dio.desafio.utils.enums.OpcoesMenuPrincipal;
+
 import com.dio.desafio.view.helpers.Mensagens;
 import com.dio.desafio.view.helpers.SeletorBootcamps;
 
