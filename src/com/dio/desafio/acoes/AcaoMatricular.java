@@ -5,7 +5,6 @@ import com.dio.desafio.dominio.Bootcamp;
 import com.dio.desafio.dominio.Dev;
 import com.dio.desafio.view.helpers.Mensagens;
 import com.dio.desafio.view.helpers.Seletor;
-import com.dio.desafio.view.helpers.SeletorBootcamps;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class AcaoMatricular implements Acao{
 
     public AcaoMatricular(ControllerPrincipal controllerPrincipal, Seletor<Bootcamp> seletorBootcamp){
         this.controllerPrincipal = controllerPrincipal;
-        this.seletorBootcamp = new SeletorBootcamps();
+        this.seletorBootcamp = seletorBootcamp;
     }
 
     @Override
