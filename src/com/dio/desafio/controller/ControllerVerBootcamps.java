@@ -3,7 +3,6 @@ package com.dio.desafio.controller;
 import com.dio.desafio.dominio.Bootcamp;
 import com.dio.desafio.view.componentes.Tabela;
 
-import javax.swing.*;
 import java.util.List;
 
 public interface ControllerVerBootcamps extends IController {
@@ -31,21 +30,5 @@ public interface ControllerVerBootcamps extends IController {
         }
 
         Tabela.criarTabelaPadrao(linhas, colunas).setVisible(true);
-
-    }
-
-    static int mostrarEscolhaBootcamps(List<Bootcamp> bootcamps){
-        return bootcamps == null ?
-                -1 :
-                JOptionPane.showOptionDialog(
-                null,
-                "Qual Bootcamp você deseja se matricular?",
-                "Bootcamps - Matrícula",
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                bootcamps.toArray(),
-                bootcamps.toArray()[0]
-        );
     }
 }

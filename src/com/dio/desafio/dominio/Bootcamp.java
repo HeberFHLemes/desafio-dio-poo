@@ -21,16 +21,6 @@ public class Bootcamp {
         this.dataFinal = LocalDate.now().plusDays(duracaoEmDias);
     }
 
-    /*public String matricularDev(Dev dev) {
-        if (inscritos.add(dev)) {
-            return "Parabéns, " + dev.getNome() +
-                    "! Você concluiu sua matrícula em "
-                    + this.getNome() + " com sucesso!";
-        }
-        return "Sentimos muito, mas não foi possível concluir sua matrícula...\n" +
-                "Tente novamente mais tarde.";
-    }*/
-
     // Getters
     public String getNome() {
         return nome;

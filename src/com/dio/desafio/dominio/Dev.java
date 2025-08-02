@@ -37,7 +37,7 @@ public class Dev {
         this.conteudosConcluidos.add(conteudoConcluido);
         this.conteudosInscritos.remove(conteudoConcluido);
 
-        calcularTotalXp();
+        this.xp += conteudoConcluido.calcularXp();
 
         return conteudoConcluido;
     }

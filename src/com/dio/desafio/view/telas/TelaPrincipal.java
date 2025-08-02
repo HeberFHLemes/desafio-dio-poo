@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
 
-public abstract class TelaPrincipal extends JFrame{
+public class TelaPrincipal extends JFrame{
 
     protected MenuDeOpcoes menu  = new MenuDeOpcoes();
 
@@ -20,9 +20,9 @@ public abstract class TelaPrincipal extends JFrame{
         setSize(600, 400);
         setLocationRelativeTo(null);
 
-        adicionarComponentes();
-
         setLayout(new FlowLayout());
+
+        adicionarComponentes();
     }
 
     private void adicionarComponentes(){
@@ -33,6 +33,4 @@ public abstract class TelaPrincipal extends JFrame{
 
         add(jButtonSelecionar);
     }
-
-    public abstract void avisarController();
 }
