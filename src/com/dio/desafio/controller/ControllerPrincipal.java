@@ -12,9 +12,8 @@ import javax.swing.SwingUtilities;
 import java.util.List;
 
 /**
- * Classe para controlar o fluxo de escolhas do usuário.
- * Além de receber e enviar dados ao dominio, para aplicação
- * das regras de negócio.
+ * Classe que recebe as ações do usuário e direciona
+ * para a execução.
  */
 public class ControllerPrincipal {
 

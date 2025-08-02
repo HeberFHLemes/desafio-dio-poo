@@ -2,6 +2,10 @@ package com.dio.desafio.utils.enums;
 
 import java.util.Optional;
 
+/**
+ * Enum de possíveis ações do usuário,
+ * presentes como opções na tela principal.
+ */
 public enum OpcoesMenuPrincipal {
     MATRICULAR("Matricular-se em um Bootcamp"),
     CONSULTAR_BOOTCAMPS("Consultar Bootcamps disponíveis"),

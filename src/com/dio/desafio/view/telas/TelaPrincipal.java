@@ -67,13 +67,3 @@ public class TelaPrincipal extends JFrame {
         add(jPanelTextoAbaixo, BorderLayout.SOUTH);
     }
 }
-/*
-private void adicionarComponentes(){
-        this.jButtonSelecionar.setEnabled(true);
-        this.menu.adicionarOpcoes(OpcoesMenuPrincipal.values());
-
-        add(menu);
-
-        add(jButtonSelecionar);
-    }
- */

@@ -10,9 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Instancia e organiza os dados dos
- * objetos utilizados na aplicação,
- * tornando a experiência "mais realista".
+ * Instancia e organiza os dados dos objetos de domínio utilizados na aplicação.
  */
 public abstract class MocksFactory {
 
