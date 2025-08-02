@@ -14,7 +14,7 @@ import java.util.List;
  * existentes ao iniciar a aplicação,
  * tornando a experiências "mais realista".
  */
-public class MocksFactory {
+public abstract class MocksFactory {
 
     public static List<Bootcamp> criarMocks(){
 
@@ -43,14 +43,12 @@ public class MocksFactory {
 
         devs.subList(0, 3).forEach(d -> d.inscreverEmBootcamp(bootcamps.get(0)));
         devs.subList(3, devs.size()).forEach(d -> d.inscreverEmBootcamp(bootcamps.get(1)));
-        // bootcamps.get(0).getInscritos().addAll(devs.subList(0, 3));
-        // bootcamps.get(1).getInscritos().addAll(devs.subList(3, devs.size()));
     }
 
     private static void progredirDevs(List<Bootcamp> bootcamps){
         bootcamps.forEach(b -> b.getInscritos().forEach(Dev::progredir));
 
-        bootcamps.get(1).getInscritos().stream().findFirst().ifPresent(Dev::progredir);
+        bootcamps.get(0).getInscritos().stream().findFirst().ifPresent(Dev::progredir);
         bootcamps.get(1).getInscritos().stream().findAny().ifPresent(Dev::progredir);
     }
 
@@ -58,7 +56,7 @@ public class MocksFactory {
         return List.of(
                 new Curso("Programação Orientada a Objetos", "Todos os conceitos de POO para você programar com uma base sólida.", 8),
                 new Mentoria("Mentoria de Java", "Mentoria on-line sobre a linguagem Java", LocalDate.now()),
-                new Curso("Autenticação e Segurança com Spring Security", "Proteja suas aplicação do Spring Framework e garanta a proteção de dados pessoais.", 6),
+                new Curso("Autenticação e Segurança com Spring Security", "Proteja suas aplicações do Spring Framework e garanta a proteção de dados pessoais.", 6),
                 new Curso("Desenvolvimento de RESTful APIs", "Crie suas primeiras APIs, de forma estrutura e seguindo o padrão REST.", 10),
                 new Curso("Seguindo boas práticas em Spring Framework", "Estude as convenções e padrões de desenvolvimento no Spring Framework.", 6)
         );

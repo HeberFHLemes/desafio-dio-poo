@@ -13,6 +13,7 @@ public class Dev {
     private String nome;
     private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
+    private double xp = 0d;
 
     public Dev(String nome){
         this.nome = nome;
@@ -26,14 +27,19 @@ public class Dev {
         bootcamp.getInscritos().add(this);
     }
 
-    public void progredir() {
+    public Conteudo progredir() throws NenhumConteudoInscrito{
         Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
-        if(conteudo.isPresent()) {
-            this.conteudosConcluidos.add(conteudo.get());
-            this.conteudosInscritos.remove(conteudo.get());
-        } else {
+
+        if(conteudo.isEmpty()) {
             throw new NenhumConteudoInscrito("Você não está matriculado em nenhum conteúdo!");
         }
+        Conteudo conteudoConcluido = conteudo.get();
+        this.conteudosConcluidos.add(conteudoConcluido);
+        this.conteudosInscritos.remove(conteudoConcluido);
+
+        calcularTotalXp();
+
+        return conteudoConcluido;
     }
 
     public double calcularTotalXp() {
@@ -42,6 +48,7 @@ public class Dev {
         while (iterator.hasNext()) {
             soma += iterator.next().calcularXp();
         }
+        this.xp = soma;
         return soma;
     }
 
@@ -67,6 +74,10 @@ public class Dev {
 
     public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
         this.conteudosConcluidos = conteudosConcluidos;
+    }
+
+    public double getXp(){
+        return this.xp;
     }
 
     @Override

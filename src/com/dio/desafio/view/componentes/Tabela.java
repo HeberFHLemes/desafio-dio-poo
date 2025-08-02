@@ -1,12 +1,14 @@
-package com.dio.desafio.view.telas;
+package com.dio.desafio.view.componentes;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class TelaBootcamps {
+public interface Tabela {
 
-    public JFrame criarTabelaBootcamps(Object[] colunas, Object[][] linhas){
+    static JFrame criarTabelaPadrao(Object[][] linhas, Object[] colunas){
+        if (linhas == null || colunas == null) return null;
+
         JTable tabela = new JTable(linhas, colunas);
         tabela.setBounds(10, 10, 600, 400);
 

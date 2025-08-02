@@ -1,7 +1,7 @@
 package com.dio.desafio.controller;
 
 import com.dio.desafio.dominio.Bootcamp;
-import com.dio.desafio.view.telas.TelaBootcamps;
+import com.dio.desafio.view.componentes.Tabela;
 
 import javax.swing.*;
 import java.util.List;
@@ -9,8 +9,6 @@ import java.util.List;
 public interface ControllerVerBootcamps extends IController {
 
      static void mostrarTabelaBootcamps(List<Bootcamp> bootcamps){
-
-        TelaBootcamps telaBootcamps = new TelaBootcamps();
 
         Object[] colunas = new Object[]{
                 "Nome",
@@ -32,7 +30,7 @@ public interface ControllerVerBootcamps extends IController {
             };
         }
 
-        telaBootcamps.criarTabelaBootcamps(colunas, linhas).setVisible(true);
+        Tabela.criarTabelaPadrao(linhas, colunas).setVisible(true);
 
     }
 

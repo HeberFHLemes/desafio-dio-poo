@@ -23,14 +23,18 @@ public interface ControllerMatricula extends IController{
         if (dev.getConteudosInscritos().containsAll(bootcamp.getConteudos())){
             JOptionPane.showMessageDialog(
                     null,
-                    "Parece que você já está inscrito no bootcamp " + bootcamp + "...");
+                    "Parece que você já está inscrito no bootcamp: " + bootcamp + "...");
+            return;
+        } else if (dev.getConteudosConcluidos().containsAll(bootcamp.getConteudos())){
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Parece que você já está concluiu este bootcamp: " + bootcamp + "...");
             return;
         }
-        dev.inscreverEmBootcamp(bootcamps.get(escolha));
-
+        dev.inscreverEmBootcamp(bootcamp);
         JOptionPane.showMessageDialog(
                 null,
-                "Parabéns!\nVocê concluiu a sua matrícula no bootcamp " + bootcamp + "!"
+                "Parabéns!\nVocê concluiu a sua matrícula no bootcamp: " + bootcamp + "!"
         );
     }
 }

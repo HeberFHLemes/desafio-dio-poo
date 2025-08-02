@@ -2,12 +2,12 @@ package com.dio.desafio.controller.strategy;
 
 import com.dio.desafio.controller.ControllerMatricula;
 import com.dio.desafio.controller.ControllerPrincipal;
+import com.dio.desafio.controller.ControllerProgredir;
+import com.dio.desafio.controller.ControllerRanking;
+import com.dio.desafio.controller.ControllerVerBootcamps;
 import com.dio.desafio.controller.IController;
 import com.dio.desafio.utils.enums.OpcoesMenuPrincipal;
-
 import com.dio.desafio.view.helpers.Mensagens;
-
-import static com.dio.desafio.controller.ControllerVerBootcamps.mostrarTabelaBootcamps;
 
 public class PrincipalRedirectStrategy implements RedirectStrategy{
 
@@ -26,13 +26,13 @@ public class PrincipalRedirectStrategy implements RedirectStrategy{
                 ControllerMatricula.matricularDev(controller.getDev(), controller.getBootcamps());
                 break;
             case PROGREDIR:
-                System.out.println(OpcoesMenuPrincipal.PROGREDIR);
+                ControllerProgredir.progredir(controller.getDev());
                 break;
             case CONSULTAR_BOOTCAMP:
-                mostrarTabelaBootcamps(controller.getBootcamps());
+                ControllerVerBootcamps.mostrarTabelaBootcamps(controller.getBootcamps());
                 break;
             case RANKING:
-                System.out.println(OpcoesMenuPrincipal.RANKING);
+                ControllerRanking.mostrarRanking(controller.getBootcamps());
                 break;
             default:
                 Mensagens.mensagemErro("Escolha inválida...");
