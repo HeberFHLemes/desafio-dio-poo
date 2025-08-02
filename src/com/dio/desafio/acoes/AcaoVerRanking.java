@@ -49,6 +49,6 @@ public class AcaoVerRanking implements Acao{
             };
         }
 
-        Tabela.criarTabelaPadrao(linhas, colunas).setVisible(true);
+        Tabela.criarTabelaPadrao(controllerPrincipal.getTela(), linhas, colunas).setVisible(true);
     }
 }

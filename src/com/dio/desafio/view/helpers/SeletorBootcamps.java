@@ -3,18 +3,19 @@ package com.dio.desafio.view.helpers;
 import com.dio.desafio.dominio.Bootcamp;
 
 import javax.swing.JOptionPane;
+import java.awt.*;
 import java.util.List;
 
 public class SeletorBootcamps implements Seletor<Bootcamp> {
 
     @Override
-    public int selecionar(List<Bootcamp> opcoes) {
+    public int selecionar(List<Bootcamp> opcoes, Frame parentComponent) {
         if (opcoes == null || opcoes.isEmpty()){
             return -1;
         }
         Object[] opcoesArray = opcoes.toArray();
         return JOptionPane.showOptionDialog(
-                null,
+                parentComponent,
                 "Qual Bootcamp você deseja se matricular?",
                 "Bootcamps - Matrícula",
                 JOptionPane.DEFAULT_OPTION,

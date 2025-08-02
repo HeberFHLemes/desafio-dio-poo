@@ -19,7 +19,7 @@ public class AcaoConsultarBootcamps implements Acao{
     public void executar() {
         Object[] colunas = new Object[]{
                 "Nome",
-                "Descrição",
+                // "Descrição",
                 "Data Inicial",
                 "Data Final",
                 "Inscritos"
@@ -33,7 +33,7 @@ public class AcaoConsultarBootcamps implements Acao{
             Bootcamp b = bootcamps.get(i);
             linhas[i] = new Object[]{
                     b.getNome(),
-                    b.getDescricao(),
+                    // b.getDescricao(),
                     b.getDataInicial(),
                     b.getDataFinal(),
                     b.getInscritos().size()
@@ -41,11 +41,12 @@ public class AcaoConsultarBootcamps implements Acao{
         }
 
         if (linhas.length > 0) {
-            Tabela.criarTabelaPadrao(linhas, colunas).setVisible(true);
+            Tabela.criarTabelaPadrao(controllerPrincipal.getTela(), linhas, colunas).setVisible(true);
             return;
         }
 
         Mensagens.mensagemErro(
+                controllerPrincipal.getTela(),
                 "Parece que não há dados suficientes para mostrar a tabela..."
         );
     }

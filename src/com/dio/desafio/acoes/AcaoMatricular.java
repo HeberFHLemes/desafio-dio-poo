@@ -23,10 +23,13 @@ public class AcaoMatricular implements Acao{
 
         List<Bootcamp> bootcamps = controllerPrincipal.getBootcamps();
 
-        int escolha = this.seletorBootcamp.selecionar(bootcamps);
+        int escolha = this.seletorBootcamp.selecionar(bootcamps, controllerPrincipal.getTela());
 
         if (escolha == -1){
-            Mensagens.mensagemAoUsuario("Nenhum bootcamp selecionado.", "Bootcamps - Matrícula");
+            Mensagens.mensagemAoUsuario(
+                    controllerPrincipal.getTela(),
+                    "Nenhum bootcamp selecionado.",
+                    "Bootcamps - Matrícula");
             return;
         } else if (escolha >= bootcamps.size()){
             Mensagens.mensagemErro("Opção inválida...");
@@ -38,11 +41,13 @@ public class AcaoMatricular implements Acao{
 
         if (dev.getConteudosInscritos().containsAll(bootcamp.getConteudos())){
             Mensagens.mensagemErro(
+                    controllerPrincipal.getTela(),
                     "Parece que você já está inscrito no bootcamp: " + bootcamp + "..."
             );
             return;
         } else if (dev.getConteudosConcluidos().containsAll(bootcamp.getConteudos())){
             Mensagens.mensagemErro(
+                    controllerPrincipal.getTela(),
                     "Parece que você já concluiu este bootcamp: " + bootcamp + "...");
             return;
         }
@@ -50,7 +55,9 @@ public class AcaoMatricular implements Acao{
         dev.inscreverEmBootcamp(bootcamp);
 
         Mensagens.mensagemAoUsuario(
-                "Parabéns!\nVocê concluiu a sua matrícula no bootcamp: " + bootcamp + "!",
+                controllerPrincipal.getTela(),
+                "Parabéns!\nVocê concluiu a sua matrícula no bootcamp: " + bootcamp + "!\n" +
+                bootcamp.getDescricao(),
                 "Bootcamps - Matrícula concluída"
         );
     }

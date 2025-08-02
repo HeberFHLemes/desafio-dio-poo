@@ -8,6 +8,7 @@ import com.dio.desafio.view.helpers.Mensagens;
 import com.dio.desafio.view.telas.TelaPrincipal;
 
 import javax.swing.SwingUtilities;
+
 import java.util.List;
 
 /**
@@ -45,7 +46,7 @@ public class ControllerPrincipal {
                     if (selecao >= 0 && selecao < this.menu.getItemCount()) {
                         cp.direcionar(selecao);
                     } else {
-                        Mensagens.mensagemAoUsuario("Nenhuma opção selecionada...", "Bootcamps - Menu de opções");
+                        Mensagens.mensagemAoUsuario(tela, "Nenhuma opção selecionada...", "Bootcamps - Menu de opções");
                     }
                 });
             }
@@ -61,7 +62,7 @@ public class ControllerPrincipal {
     }
 
     public void sair(){
-        Mensagens.mensagemAoUsuario("Até a próxima!", "Sair");
+        Mensagens.mensagemAoUsuario(tela, "Até a próxima!", "Sair");
         this.tela.setVisible(false);
         System.exit(0);
     }
@@ -72,5 +73,9 @@ public class ControllerPrincipal {
 
     public List<Bootcamp> getBootcamps(){
         return this.bootcamps;
+    }
+
+    public TelaPrincipal getTela(){
+        return this.tela;
     }
 }

@@ -1,7 +1,6 @@
 package com.dio.desafio.view.componentes;
 
 import javax.swing.JComboBox;
-import java.util.Objects;
 
 public class MenuDeOpcoes extends JComboBox<Object> {
 
@@ -15,9 +14,5 @@ public class MenuDeOpcoes extends JComboBox<Object> {
         for (Object op : opcoes){
             this.addItem(op);
         }
-    }
-
-    public String getStringSelecionada(){
-        return Objects.requireNonNull(this.getSelectedItem()).toString();
     }
 }

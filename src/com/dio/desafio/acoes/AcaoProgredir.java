@@ -23,6 +23,7 @@ public class AcaoProgredir implements Acao{
             Conteudo conteudoConcluido = dev.progredir();
 
             Mensagens.mensagemAoUsuario(
+                    controllerPrincipal.getTela(),
                     "\tConteúdo concluído!\n" +
                             conteudoConcluido.getNome() + "\n" +
                             conteudoConcluido.getDescricao() + "\n" +
@@ -34,13 +35,16 @@ public class AcaoProgredir implements Acao{
             );
 
             Mensagens.mensagemAoUsuario(
+                    controllerPrincipal.getTela(),
                     "\tParabéns! Você acaba de concluir " + conteudoConcluido.getNome() + "! \n" +
                             "Seu XP atual: " + dev.getXp() + ".\nContinue assim!",
                     "Bootcamp - Progressão"
             );
 
         } catch (NenhumConteudoInscrito e){
-            Mensagens.mensagemErro("Parece que você não está inscrito em nenhum Bootcamp...\n" +
+            Mensagens.mensagemErro(
+                    controllerPrincipal.getTela(),
+                    "Parece que você não está inscrito em nenhum Bootcamp...\n" +
                     "Aproveite para matricular-se em um agora mesmo!");
         }
     }
